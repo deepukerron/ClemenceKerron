@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Designe Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #f5f5f5;
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 5rem 8%;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.5rem;
+      color: #d4af37;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: #d4af37;
+      margin: 10px auto 0;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(13, 13, 13, 0.7);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 8%;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #d4af37;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #d4af37;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #d4af37;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      background: #d4af37;
+      color: #0d0d0d;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #b89620;
+      transform: translateY(-3px);
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(13,13,13,0.6), rgba(13,13,13,0.6)),
+                  url("https://picsum.photos/1600/900?blur=2") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(212, 175, 55, 0.2);
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+
+    .hero-content {
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      color: #d4af37;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* About */
+    .about p {
+      max-width: 750px;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #ddd;
+      text-align: center;
+      line-height: 1.8;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+    }
+
+    /* Portfolio */
+    .portfolio {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-item {
+      overflow: hidden;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .portfolio-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(212,175,55,0.3);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Skills */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .skill {
+      background: rgba(212, 175, 55, 0.9);
+      color: #0d0d0d;
+      padding: 0.9rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: scale(1.1) rotate(-2deg);
+      background: #b89620;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+
+    /* Decorative abstract shapes */
+    .contact::before,
+    .skills::before {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(212,175,55,0.15);
+      border-radius: 50%;
+      filter: blur(70px);
+      z-index: 0;
+    }
+
+    .contact::before {
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .skills::before {
+      top: -60px;
+      right: -60px;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(13, 13, 13, 0.7);
+      color: #888;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Clemence<span>Kerron</span></div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn">Hire Me</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hello, I'm Clemence Kerron</h1>
+      <p>I am a passionate Graphic Designer
+         dedicated to creating visually compelling and meaningful designs that communicate ideas effectively. My work spans branding, digital, and print design, blending creativity with strategy to deliver solutions that resonate. I focus on clean, modern aesthetics while experimenting with bold concepts to bring unique visions to life</p>
+      <a href="#portfolio" class="btn">View My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a creative graphic designer passionate about minimalism, typography, and golden aesthetics. 
+      My work blends elegance with bold concepts to help brands leave a lasting impression.
+    </p>
+  </section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+  <h2>Portfolio</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <img src="c:/Users/deepu/OneDrive/Desktop/Portfolio/Navdhara ID Tags .jpg" alt="Design 1" class="lightbox-trigger">
+    </div>
+    <div class="portfolio-item">
+      <img src="c:/Users/deepu/OneDrive/Desktop/Portfolio/MALANG 2K25.jpg" alt="Design 2" class="lightbox-trigger">
+    </div>
+    <div class="portfolio-item">
+      <img src="c:/Users/deepu/OneDrive/Desktop/Portfolio/Screenshot 2025-06-22 194327.png" alt="Design 3" class="lightbox-trigger">
+    </div>
+    <div class="portfolio-item">
+      <img src="c:/Users/deepu/OneDrive/Desktop/Portfolio/Screenshot 2025-06-22 194236.png" alt="Design 4" class="lightbox-trigger">
+    </div>
+    <div class="portfolio-item">
+      <img src="c:/Users/deepu/OneDrive/Desktop/Portfolio/Canteen Banner Navdhara 2k25.jpg" alt="Design 5" class="lightbox-trigger">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\Deeksharambh 2025-26.jpg" alt="Design 5" class="lightbox-trigger">
+    </div>
+    <div class="portfolio-item">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\1.jpg" alt="Design 6" class="lightbox-trigger">
+    </div>
+    <div class="portfolio-item">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\2.jpg" alt="Design 7" class="lightbox-trigger">
+      </div>  
+      <div class="portfolio-item">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\3.jpg" alt="Design 8" class="lightbox-trigger">
+      </div>  
+      <div class="portfolio-item">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\4.jpg" alt="Design 9" class="lightbox-trigger">
+      </div>  
+      <div class="portfolio-item">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\5.jpg" alt="Design 10" class="lightbox-trigger">
+      </div>  
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\A3 Poster Navdhara 2k25  .jpg" alt="Design 11" class="lightbox-trigger">
+      </div>
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\BIDAR.jpg" alt="Design 12" class="lightbox-trigger">
+      </div>
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\Blue and Orange Modern Cyber Security Services Banner.jpg" alt="Design 13" class="lightbox-trigger">
+      </div>
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\Blue and Yellow Modern Business Webinar Linkedin Post.jpg" alt="Design 14" class="lightbox-trigger">
+      </div>
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\Blue Gold Leaves Rustic Floral Wedding Invitation.jpg" alt="Design 15" class="lightbox-trigger">
+      </div>
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\FEP Program.jpg" alt="Design 16" class="lightbox-trigger">
+      </div>  
+      <div class="portfolio-item">
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\IMG_1127.PNG" alt="Design 17" class="lightbox-trigger">
+      </div>
+      <div class="portfolio-item">  
+      <img src="c:\Users\deepu\OneDrive\Desktop\Portfolio\IMG_1128.PNG" alt="Design 18" class="lightbox-trigger">
+      </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:10000; cursor:pointer;">
+  <img id="lightbox-img" src="" style="max-width:100%; max-height:100%; object-fit:contain; border-radius:0;">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.lightbox-trigger').forEach(img => {
+    img.addEventListener('click', e => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+
+      // Set the image natural size if it fits on screen
+      const imgObj = new Image();
+      imgObj.src = img.src;
+      imgObj.onload = () => {
+        lightboxImg.style.width = imgObj.width > window.innerWidth ? '90%' : imgObj.width + 'px';
+        lightboxImg.style.height = imgObj.height > window.innerHeight ? '90%' : imgObj.height + 'px';
+      }
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  // Optional: Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.style.display = 'none';
+  });
+</script>
+
+
+
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div class="skill">Logo Design</div>
+      <div class="skill">Brand Identity</div>
+      <div class="skill">Adobe Photoshop</div>
+      <div class="skill">Adobe Illustrator</div>
+      <div class="skill">Luxury Aesthetics</div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Let’s create something iconic together.</p>
+    <a href="mailto:your@email.com" class="btn">Send Email</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Your Name | Graphic Designer Portfolio</p>
+  </footer>
+</body>
+</html>
